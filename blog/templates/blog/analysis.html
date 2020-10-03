@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+	<!-- <div class="gallery"> -->
+		{% for file in files %}
+			<img width=1400px height=800px src="/media/Analysis/{{file}}" />
+	{% endfor %}
+	<!-- </div> -->
+{% endblock %}

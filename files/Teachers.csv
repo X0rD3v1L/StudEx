@@ -1,0 +1,34 @@
+S.NO,NAME OF THE FACULTY,SUBJECT,SECTIONS,LAB,SECTIONS.1,WORKLOAD,Unnamed: 7
+1,Mr.K.K.Singh,MAD,"1,2",MAD,"1,2",14,
+2,Mr.A.Udaya Kumar,HCI,1,SE,"1,2",11,
+3,Dr DVN.Devi,DS,"1,2",DS,"1,2",16,
+4,Mr.R.Upendar Rao,DS,"3,4",DS,"3,4",16,
+5,Mr.S.Chiranjeevi,DIP,"1,2,3,4,5,6",DS          PSTC++,"3,3",16,
+6,Mr.Kumar Anurupam,CS,"1,2,3,4,5,6",DS,"1,5",16,
+7,Msr. S.Bhavani,CN,"3,4","CN,         ","3,4                    ",16,
+8,Mrs.Y.Kalavathi(IT),AI,"1,2,3,4,5,6,7",SE,"6,7",20,
+9,Mr.B.Raghuramiah(IT),SE,"1,2",SE ,"1,2,3,6",20,
+10,Mr.V.BHARAT,SC,"1,2,3,4","PSTC++,          SE","4,               4,5",19,
+11,Mrs.M.j.Blessy,ISN,"1,2,3,4,5,6,7","SE, CN","7, 6",20,
+12,Mrs.K.Krihnapriya,PSTC++,"4,5",PSTC++,"2,3,4,5",20,
+13,Mr.N.Ramakrishna,AGT,"4,5,6",OOPS,3,18,
+14,Mr.M.Ramesh,PSTC++,"1,2,3",PSTC++,"1,2",18,
+15,Mr.V.Ramarao,CN,"5,6",CN,"3,5,6",19,
+16,Mr.K.Sravan Kumar,CN,"1,2,7",CN,2,18,
+17,Mr.M V Bhanu prakash,MANET,"1,2,3,4",CN,"1,4,7",19,
+18,Mrs.K Rajasree,SADP,"1,2,3,4","CN,                   MAD","1,2.               2",19,
+19,Ms. N. Swathi,DSBD,"1,2,3,4",MAD,1,13,2 OOPs labs
+20,Mrs.D. Srilakshmi,SE,"3,4","SE,DS","3,4.   2",19,
+21,Mrs.G. Shobana,DM,"1,2","MAD, PSTC++","2,2",16,1 OOPS lab
+22,Ms.B. Padma bai,SE,"5,6,7",SE,"5,6",18,
+23,K. Lakshmikanth,DM,"5,6","PSTC++, MAD","4,5",16,
+24,Mr.R. Siva Narayana,DM,"3,4",CN,"3,7",16,
+25,Mrs.CH.Lakshmibala,NLP,"1,2,3,4,5,6",,,10,"2PDS labs, 1 OOPs _L"
+26,Ms.T. Padmasri,OOPS,"1,2,3,4",E1 OOPS-ECE,,19,ECE
+27,Mr.P.Suresh kumar yadav,MAD,"5,6,7",MAD,"5,6",18,
+28,Mr.S.PapaRao,DSBD,"5,6",PSTC++,5,13,2PDS labs
+29,Mrs.V.Pavani,ST,"1,2","CN,SE","2,5",16,1PDS Lab
+30,Mrs.P.Ramya Lavanya,AGT,"1,2,3",OOPS,,18,
+31,Mr.S.Sampath,ST,"3,4",MAD,"5,6",16,1 OOPS lab
+32,Mr.N.Seethiah,"DS,HCI",10,"DS,MAD","5 &3,7",19,
+33,Mr.Bhuvan(IT),MAD,"2,3",MAD,"3,4,7",19,

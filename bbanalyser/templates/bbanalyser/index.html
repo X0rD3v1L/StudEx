@@ -1,0 +1,49 @@
+{% extends 'blog/base.html' %}
+	{% block script %}
+		<head>
+			<title>Babu's Analyzer</title>
+		</head>
+		<script type="text/javascript">
+			var data = {{ data | safe }}
+			var time = {{ time | safe }}
+		    function find(value) {
+		        if (value.length == 0) document.getElementById("folders").innerHTML = "<option></option>";
+		        else {
+		            var catOptions = "<option> Select </option>";
+		            for (categoryId in data[value]) {
+		                catOptions += "<option>" + data[value][categoryId] + "</option>";
+		            }
+		            document.getElementById("folders").innerHTML = catOptions;
+		        }
+		    }
+		    function gettime(value) {
+		    	var sub = document.getElementById("subjects").value;
+		    	var fdr = document.getElementById("folders").value;
+		    	ans = time[sub][fdr];
+		    	table = "<table id='table'><th>Subject : " + sub + "<br>Folder : " + fdr + "</th><tr><td>1x</td><td>"+ ans[0] +"</td></tr><tr><td>1.5x</td><td>"+ ans[1] +"</td></tr><tr><td>2x</td><td>"+ ans[2] +"</td></tr></table>"
+		        document.getElementById("table").innerHTML = table;
+		    }
+		</script>
+	{% endblock %}
+	{% block content %}
+		<center>
+			<h2>Babu's Analyzer</h2>
+			<h4>A Comprehensive Tool to analyze the time to watch videos at different speeds</h4>
+			<hr>
+			<select id = "subjects" style="width:300px;" onchange="find(this.value);">
+				<option selected disabled="true">Subject Name</option>
+				{% for subjects in time %}
+					<option value="{{subjects}}">{{subjects}}</option>
+				{% endfor %}
+			</select>
+			<select id="folders" style="width:300px;" onchange="gettime(this.value);">
+				<option selected disabled="true">Folder Name</option>
+			</select>
+			<br><br><br>
+			<table id="table"></table>
+			
+		</center>
+	{% endblock %}
+
+</body>
+</html>

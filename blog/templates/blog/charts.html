@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<script type="text/javascript" src="https://sdn.zingchart.com/zingchart.min.js"></script>
+<h2>Hello</h2>
+<div id="myChart">
+3
+<script type="text/javascript">
+	var chartData = {
+		"type":"bar",
+		"scale-x":{
+			"values":["A","B","C"],
+		}
+	}
+
+	zingchart.render({
+		id:"myChart",
+		data:"chartData",
+	});
+</script>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	{{message}}
+	{% if login %}
+		<a href="{% url 'login' %}">login now</a>
+	{% endif %}
+{% endblock %}

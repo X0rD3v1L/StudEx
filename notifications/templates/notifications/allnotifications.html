@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% load mathfilters %}
+{% block content %}
+	<main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+				{% for note in notes %}
+					<article class="media content-section">
+					  <img class="rounded-circle article-img" src="{{ note.user.profile.image.url }}">
+				      <div class="media-body">
+				        <div class="article-metadata">
+				          <a class="mr-2" href="#">{{ note.user }}</a>
+				          <div class="notification-date">{{note.time}}</div>
+				        </div>
+				        <p class="article-content">{{ note.message }}</p>
+				      </div>
+				    </article>
+				{% endfor %}
+			</div>
+		</div>
+	</main> 
+{% endblock %}

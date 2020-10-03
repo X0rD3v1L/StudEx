@@ -1,0 +1,85 @@
+{% extends 'blog/base.html' %}
+
+{% block scripts %}
+<head>
+	<title>Attendance</title>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+{% endblock %}
+
+{% block content %}
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/data.js"></script>
+	<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+	<figure class="highcharts-figure">
+		<div id="container"></div>
+	</figure>
+	<script type="text/javascript">
+	Highcharts.setOptions({
+		colors: ['#50B432', '#F31204', '#DDDF00', '#08D9DE', '#64E572', '#FF9655', '#FFF263', '#6AF9C4', '#1004F3', '#DEC608']
+	});
+	Highcharts.chart('container', {
+		chart: {
+			type: 'pie'
+		},
+		credits:{
+			text:"X0rDev1L",
+		},
+		title: {
+			text: 'Attendance'
+		},
+		subtitle: {
+			text: ''
+		},
+		accessibility: {
+			announceNewData: {
+				enabled: true
+			},
+			point: {
+				valueSuffix: '%'
+			}
+		},
+		plotOptions: {
+			series: {
+				dataLabels: {
+					enabled: true,
+					format: '{point.name}: {point.y:.1f}%'
+				}
+			}
+		},
+		tooltip: {
+			headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+			pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+		},
+		series: [{
+			name: "Attendance",
+			colorByPoint: true,
+			data: [{
+				name: "Present",
+				y: {{total_p}},
+				drilldown: "Present"
+			}, {
+				name: "Absent",
+				y: {{total_a}},
+				drilldown: "Absent"
+			}, ]
+		}],
+		drilldown: {
+			series: [{
+				name: "Present",
+				id: "Present",
+
+				data: {{presents_list|safe}}
+			}, {
+				name: "Absent",
+				id: "Absent",
+				data: {{absents_list|safe}}
+			}, ]
+		}
+	});
+	</script>
+{% endblock %}

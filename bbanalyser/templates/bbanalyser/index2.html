@@ -1,0 +1,110 @@
+{% extends 'blog/base.html' %}
+	{% block script %}
+		<head>
+			<title>Babu's Analyzer</title>
+		</head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<style type="text/css">
+			.multiselect {
+			  width: 200px;
+			}
+
+			.selectBox {
+			  position: relative;
+			}
+
+			.selectBox select {
+			  width: 100%;
+			  font-weight: bold;
+			}
+
+			.overSelect {
+			  position: absolute;
+			  left: 0;
+			  right: 0;
+			  top: 0;
+			  bottom: 0;
+			}
+
+			#checkboxes {
+			  display: none;
+			  border: 1px #dadada solid;
+			}
+
+			#checkboxes label {
+			  display: block;
+			}
+
+			#checkboxes label:hover {
+			  background-color: #1e90ff;
+			}
+		</style>
+		<script type="text/javascript">
+			var expanded = false;
+			var data = {{ data | safe }}
+			var time = {{ time | safe }}
+			function showCheckboxes() {
+			  var checkboxes = document.getElementById("checkboxes");
+			  if (!expanded) {
+			    checkboxes.style.display = "block";
+			    expanded = true;
+			  } else {
+			    checkboxes.style.display = "none";
+			    expanded = false;
+			  }
+			}
+			function find(value) {
+		        if (value.length == 0) document.getElementById("folders").innerHTML = "<option></option>";
+		        else {
+		            var catOptions = "<option> Select </option>";
+		            for (categoryId in data[value]) {
+		                catOptions += "<label><input type='checkbox' id=\"" + data[value][categoryId] +"\"/> " + data[value][categoryId] +"</label>"
+		            }
+		            document.getElementById("checkboxes").innerHTML = catOptions;
+		        }
+		    }
+		    function gettime(value) {
+		    	console.log("kjh")
+		    	// var array = []
+				// var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+				// for (var i = 0; i < checkboxes.length; i++) {
+				//   array.push(checkboxes[i].value)
+				// }
+				// console.log(array)
+		    	// var sub = document.getElementById("subjects").value;
+		    	// var fdr = document.getElementById("folders").value;
+		    	// ans = time[sub][fdr];
+		    	// table = "<table id='table'><th>Subject : " + sub + "<br>Folder : " + fdr + "</th><tr><td>1x</td><td>"+ ans[0] +"</td></tr><tr><td>1.5x</td><td>"+ ans[1] +"</td></tr><tr><td>2x</td><td>"+ ans[2] +"</td></tr></table>"
+		        // document.getElementById("table").innerHTML = table;
+		    }
+		</script>
+	{% endblock %}
+	{% block content %}
+			<h2>Babu's Analyzer</h2>
+			<h4>A Comprehensive Tool to analyze the time to watch videos at different speeds</h4>
+			<hr>
+			<select id = "subjects" style="width:300px;" onchange="find(this.value);">
+				<option selected disabled="true">Subject Name</option>
+				{% for subjects in time %}
+					<option value="{{subjects}}">{{subjects}}</option>
+				{% endfor %}
+			</select>
+			<form>
+			  <div class="multiselect">
+			    <div class="selectBox" onclick="showCheckboxes()">
+			      	<select id="folders" style="width:300px;" onchange="gettime(this.value);">
+						<option selected disabled="true">Folder Name</option>
+					</select>
+			      <div class="overSelect"></div>
+			    </div>
+			    <div id="checkboxes">
+			    </div>
+			  </div>
+			</form>
+	{% endblock %}
+
+</body>
+</html>

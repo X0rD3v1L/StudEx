@@ -1,0 +1,45 @@
+{%  extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="container">
+		<form method="POST"> {% csrf_token %}
+			{{form|crispy}}
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Search</button>
+			</div>
+		</form>
+		<p>Search Result:</p>
+		{% if List %}
+			<table class="container" style="border:5px">
+				<thead>
+					<tr>
+						<td>Url</td>
+						<td>Title</td>
+						<td>Views</td>
+						<td>Likes</td>
+						<td>Dislikes</td>
+						<td>Published Date</td>
+						<td>Time Taken</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in List %}
+						<tr>
+							<td>{{item.url}}</td>
+							<td>{{item.title}}</td>
+							<td>{{item.views}}</td>
+							<td>{{item.likes}}</td>
+							<td>{{item.dislikes}}</td>
+							<td>{{item.pub_date}}</td>
+							<td>{{item.total_time}}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% endif %}
+		<div class="border-top pt-3">
+			<small class="text-muted">Youtube Playlist<a class="ml-2" href="{% url 'youtube_playlist' %}" >Playlist</a>
+			</small>
+		</div>
+	</div>
+{% endblock %}

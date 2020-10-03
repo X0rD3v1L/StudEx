@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="container">
+		<form method="POST"> {% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Paste Url</legend>
+				{{ form|crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Submit</button>
+			</div>
+		</form>
+		{%  if dic %}
+			<table>
+				<tr>
+					<td>Title</td>
+					<td>{{dic.title}}</td>
+				</tr>
+				<tr>
+					<td>Image Url	</td><td>{{dic.image}}</td>
+				</tr>
+				<tr>
+					<td>Image Name 	</td><td>{{dic.name}}</td>
+				</tr>
+			</table>
+		{% endif %}
+	</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{%  extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="container">
+		<form method="POST"> {% csrf_token %}
+			{{form|crispy}}
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Total time</button>
+			</div>
+		</form>
+		<p>Total Time :</p>
+		{% if List %}
+			<table class="container" style="border:5px">
+				<thead>
+					<tr>
+						<td>Px</td>
+						<td>Time</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for time,p in List %}
+						<tr>
+							<td>{{p}}x</td>
+							<td>{{time}}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% endif %}
+		<div class="border-top pt-3">
+			<small class="text-muted">Youtube video search<a class="ml-2" href="{% url 'youtube_search' %}" >Search</a>
+			</small>
+		</div>
+	</div>
+{% endblock %}
