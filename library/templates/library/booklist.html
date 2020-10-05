@@ -1,0 +1,49 @@
+{% extends 'blog/base.html' %}
+{% load mathfilters %}
+{% block content %}
+	<main role="main" class="container">
+		<h1 align="center">Books</h1>
+        <div class="row">
+            <div class="col-md-8">
+				{% for book in books %}
+					<article class="media content-section">
+					  <img class="rounded-circle article-img" src="{{ book.cover.url }}">
+				      <div class="media-body">
+				        <div class="article-metadata">
+				          <p class="mr-2" >{{ book.author }}
+				          	<small class="text-muted">{{ book.date_posted|date:"F d, Y" }}</small>
+				      	  </p>
+				        </div>
+				        <h2><p class="article-title">{{ book.title }}</p></h2>
+				        <a href=".{{ book.file.url }}" class="btn btn-primary btn-sm" target="_blank">Download PDF</a>
+				        {% if request.user.username == book.author %}
+				        	<a href="{% url 'bookdelete' book.pk %}" class="btn btn-outline-danger btn-sm">Delete</a>
+				        {% endif %}
+				      </div>
+				    </article>
+				{% endfor %}
+			</div>
+		</div>
+	</main>
+	<div class="col-md-12">
+		{% if is_paginated %}
+			{% if page_obj.has_previous %}
+				<a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+				<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+			{% endif %}
+
+			{% for num in page_obj.paginator.page_range %}
+				{% if num == page_obj.number %}
+					<a class="btn btn-info mb-4" href="?page={{num}}">{{num}}</a>
+				{% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3" %}
+					<a class="btn btn-outline-info mb-4" href="?page={{num}}">{{num}}</a>
+				{% endif %}
+			{% endfor %}
+
+			{% if page_obj.has_next %}
+				<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+				<a class="btn btn-outline-info mb-4" href="?page={{ age_obj.paginator.count }}">Last</a>
+			{% endif %}
+		{% endif %}
+	</div>
+{% endblock %}
